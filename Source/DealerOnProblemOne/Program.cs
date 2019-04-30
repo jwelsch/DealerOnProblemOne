@@ -11,7 +11,7 @@ namespace DealerOnProblemOne
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to NASA's Rover Operation Command Interpreter (ROCI).");
+            Console.WriteLine("Welcome to NASA's Rover Operation Command Kinetic Interpreter (ROCKI).");
 
             while (true)
             {
@@ -31,8 +31,16 @@ namespace DealerOnProblemOne
                     continue;
                 }
 
+                var reader = new FileCommandSetReader();
+                var dispatcher = new LocalCommandSetDispatcher();
 
+                RunCommandSet(reader, dispatcher);
             }
+        }
+
+        private static void RunCommandSet(ICommandSetReader reader, ICommandSetDispatcher dispatcher)
+        {
+            var interpreter = new CommandSetInterpreter(reader, dispatcher);
         }
     }
 }
