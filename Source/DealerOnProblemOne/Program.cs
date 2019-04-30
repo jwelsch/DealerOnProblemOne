@@ -15,9 +15,15 @@ namespace DealerOnProblemOne
 
             while (true)
             {
+                Console.WriteLine();
                 Console.Write("Please enter a path to a command file: ");
                 var path = Console.ReadLine();
-                Console.WriteLine();
+
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    Console.WriteLine("The path cannot be empty.");
+                    continue;
+                }
 
                 if (!File.Exists(path))
                 {
