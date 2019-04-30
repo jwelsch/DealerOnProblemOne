@@ -38,14 +38,18 @@ namespace DealerOnProblemOne
         /// </summary>
         public void Interpret()
         {
+            // Read instruction set from where they are stored.
             var rawInstructions = reader.Read();
 
+            // Read the individual instructions line by line.
             using (var reader = new StringReader(rawInstructions))
             {
+                // Only need to read the establish grid command once, since it will be applied to all rovers.
                 var line = reader.ReadLine();
 
                 var establishGridCommand = new EstablishGridCommand(line);
 
+                // Read as many position confirmation/movement instructions as are in the instruction set.
                 while (true)
                 {
                     line = reader.ReadLine();
@@ -60,11 +64,18 @@ namespace DealerOnProblemOne
 
                     line = reader.ReadLine();
 
+                    // Check for end of the instructions.
+                    if (line == null)
+                    {
+                        throw new InvalidOperationException("Expected instructions for move command.");
+                    }
+
                     var moveCommand = new MoveCommand(line);
 
                     var dispatcher = dispatcherFactory.Create();
 
-                    dispatcher.Dispatch(establishGridCommand, confirmPositionCommand, moveCommand);
+                    // Dispatch the command set to a rover.
+                    dispatcher.Dispatch(new CommandSet(establishGridCommand, confirmPositionCommand,  moveCommand));
                 }
             }
         }

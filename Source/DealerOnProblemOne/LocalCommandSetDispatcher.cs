@@ -13,13 +13,26 @@ namespace DealerOnProblemOne
     public class LocalCommandSetDispatcher : ICommandSetDispatcher
     {
         /// <summary>
-        /// Dispatches instructions to be executed.
+        /// The rover guidance logic to use.
         /// </summary>
-        /// <param name="establishGrid">Command to establish the grid.</param>
-        /// <param name="confirmPosition">Command to confirm position.</param>
-        /// <param name="move">Command to move.</param>
-        public void Dispatch(ICommand establishGrid, ICommand confirmPosition, ICommand move)
+        private readonly LocalRoverGuidance guidance;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="guidance">Rover guidance to use.</param>
+        public LocalCommandSetDispatcher(LocalRoverGuidance guidance)
         {
+            this.guidance = guidance;
+        }
+
+        /// <summary>
+        /// Dispatches commands to be executed.
+        /// </summary>
+        /// <param name="commandSet">Command set to dispatch.</param>
+        public void Dispatch(CommandSet commandSet)
+        {
+            this.guidance.Move(commandSet);
         }
     }
 }

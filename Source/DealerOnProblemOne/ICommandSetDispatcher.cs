@@ -6,11 +6,9 @@
     public interface ICommandSetDispatcher
     {
         /// <summary>
-        /// Dispatches instructions to be executed.
+        /// Dispatches commands to be executed.
         /// </summary>
-        /// <param name="establishGrid">Command to establish the grid.</param>
-        /// <param name="confirmPosition">Command to confirm position.</param>
-        /// <param name="move">Command to move.</param>
-        void Dispatch(ICommand establishGrid, ICommand confirmPosition, ICommand move);
+        /// <param name="commandSet">Command set to dispatch.</param>
+        void Dispatch(CommandSet commandSet);
     }
 }
