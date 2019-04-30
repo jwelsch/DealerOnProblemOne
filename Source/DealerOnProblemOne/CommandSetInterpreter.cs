@@ -37,7 +37,9 @@ namespace DealerOnProblemOne
         /// </summary>
         public void Interpret()
         {
+            var rawInstructions = reader.Read();
 
+            dispatcher.Dispatch(rawInstructions);
         }
     }
 }

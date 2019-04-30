@@ -31,7 +31,7 @@ namespace DealerOnProblemOne
                     continue;
                 }
 
-                var reader = new FileCommandSetReader();
+                var reader = new FileCommandSetReader(path);
                 var dispatcher = new LocalCommandSetDispatcher();
 
                 RunCommandSet(reader, dispatcher);
@@ -41,6 +41,8 @@ namespace DealerOnProblemOne
         private static void RunCommandSet(ICommandSetReader reader, ICommandSetDispatcher dispatcher)
         {
             var interpreter = new CommandSetInterpreter(reader, dispatcher);
+
+            interpreter.Interpret();
         }
     }
 }

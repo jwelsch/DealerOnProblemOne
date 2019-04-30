@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCommand.cs" />
     <Compile Include="CommandSetInterpreter.cs" />
+    <Compile Include="EstablishGridCommand.cs" />
     <Compile Include="FileCommandSetReader.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandSet.cs" />
