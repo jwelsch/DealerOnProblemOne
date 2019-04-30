@@ -14,7 +14,7 @@ namespace DealerOnProblemOne
         /// <summary>
         /// Gets the list of moves in the command.
         /// </summary>
-        public IReadOnlyList<char> Moves
+        public IReadOnlyList<Movement> Moves
         {
             get;
             private set;
@@ -35,18 +35,24 @@ namespace DealerOnProblemOne
         /// <param name="instructions">Raw instructions of the command.</param>
         protected override void ParseInstructions(string instructions)
         {
-            var moves = new List<char>();
+            var moves = new List<Movement>();
 
             foreach (var m in instructions)
             {
-                var M = char.ToUpper(m);
-
-                if (M != 'L' && M != 'R' && M != 'M')
+                switch (char.ToUpper(m))
                 {
-                    throw new ArgumentException($"The character {m} is not a valid value in the move command.", "instructions");
+                    case 'L':
+                        moves.Add(Movement.Left);
+                        break;
+                    case 'R':
+                        moves.Add(Movement.Right);
+                        break;
+                    case 'M':
+                        moves.Add(Movement.Move);
+                        break;
+                    default:
+                        throw new ArgumentException($"The character {m} is not a valid value in the move command.", "instructions");
                 }
-
-                moves.Add(M);
             }
 
             this.Moves = moves;

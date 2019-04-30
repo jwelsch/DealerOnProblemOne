@@ -17,7 +17,7 @@ namespace DealerOnProblemOne
         public int XPosition
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -26,16 +26,16 @@ namespace DealerOnProblemOne
         public int YPosition
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
         /// Gets the rover's current heading.
         /// </summary>
-        public char Heading
+        public Heading Heading
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>

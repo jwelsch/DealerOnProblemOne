@@ -74,19 +74,33 @@ namespace DealerOnProblemOne
         }
 
         /// <summary>
-        /// Converts a string to a character and will throw an FormatException if conversion fails.
+        /// Converts a string to a heading and will throw an FormatException if conversion fails.
         /// </summary>
         /// <param name="value">Value to convert.</param>
         /// <param name="errorMessage">Error message.</param>
         /// <returns>Converted integer.</returns>
-        protected static char ConvertToChar(string value, string errorMessage)
+        protected static Heading ConvertToHeading(string value, string errorMessage)
         {
             if (string.IsNullOrWhiteSpace(value) || value.Length != 1)
             {
                 throw new FormatException(errorMessage);
             }
 
-            return value[0];
+            var c = Char.ToUpper(Convert.ToChar(value));
+
+            switch (c)
+            {
+                case 'N':
+                    return Heading.North;
+                case 'S':
+                    return Heading.South;
+                case 'E':
+                    return Heading.East;
+                case 'W':
+                    return Heading.West;
+                default:
+                    throw new ArgumentException($"The value {value} does not correspond to a heading.");
+            }
         }
     }
 }

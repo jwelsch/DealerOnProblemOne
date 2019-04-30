@@ -32,7 +32,7 @@ namespace DealerOnProblemOne
         /// <summary>
         /// Gets the current heading.
         /// </summary>
-        public char Heading
+        public Heading Heading
         {
             get;
             private set;
@@ -57,7 +57,7 @@ namespace DealerOnProblemOne
 
             this.XCoordinate = ConvertToInt(values[0], "X axis length for the confirm position command could not be converted to an integer.");
             this.YCoordinate = ConvertToInt(values[1], "Y axis length for the confirm position command could not be converted to an integer.");
-            this.Heading = ConvertToChar(values[2], "Heading for the confirm position command could not be converted to a string.");
+            this.Heading = ConvertToHeading(values[2], "Heading for the confirm position command could not be converted to a string.");
         }
     }
 }

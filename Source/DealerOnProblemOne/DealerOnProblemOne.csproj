@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,8 @@
     <Compile Include="BaseCommand.cs" />
     <Compile Include="BaseRoverGuidance.cs" />
     <Compile Include="CommandSet.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="HeadingCalculator.cs" />
     <Compile Include="IRoverGuidance.cs" />
     <Compile Include="LocalCommandSetDispatcherFactory.cs" />
     <Compile Include="CommandSetInterpreter.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="LocalCommandSetDispatcher.cs" />
     <Compile Include="LocalRoverGuidance.cs" />
     <Compile Include="MoveCommand.cs" />
+    <Compile Include="PositionCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
