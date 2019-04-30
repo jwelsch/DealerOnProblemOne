@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,9 @@ namespace DealerOnProblemOne
     public class ConfirmPositionCommand : BaseCommand
     {
         /// <summary>
-        /// Gets the current x-coordinate.
+        /// Gets the position coordinates.
         /// </summary>
-        public int XCoordinate
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets the current y-coordinate.
-        /// </summary>
-        public int YCoordinate
+        public Point Coordinates
         {
             get;
             private set;
@@ -55,8 +47,12 @@ namespace DealerOnProblemOne
         {
             var values = SplitLine(instructions, 3, ec => throw new ArgumentException($"Expected {ec} values for the confirm position command.", "instructions"));
 
-            this.XCoordinate = ConvertToInt(values[0], "X axis length for the confirm position command could not be converted to an integer.");
-            this.YCoordinate = ConvertToInt(values[1], "Y axis length for the confirm position command could not be converted to an integer.");
+            this.Coordinates = new Point
+            {
+                X = ConvertToInt(values[0], "X axis length for the confirm position command could not be converted to an integer."),
+                Y = ConvertToInt(values[1], "Y axis length for the confirm position command could not be converted to an integer.")
+            };
+
             this.Heading = ConvertToHeading(values[2], "Heading for the confirm position command could not be converted to a string.");
         }
     }

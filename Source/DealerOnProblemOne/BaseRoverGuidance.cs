@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,9 @@ namespace DealerOnProblemOne
     public abstract class BaseRoverGuidance : IRoverGuidance
     {
         /// <summary>
-        /// Gets the x-coordinate of the rover's current position.
+        /// Gets the coordinates of the rover.
         /// </summary>
-        public int XPosition
-        {
-            get;
-            protected set;
-        }
-
-        /// <summary>
-        /// Gets the y-coordinate of the rover's current position.
-        /// </summary>
-        public int YPosition
+        public Point Coordinates
         {
             get;
             protected set;

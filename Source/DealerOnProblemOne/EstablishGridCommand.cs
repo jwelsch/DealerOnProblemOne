@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,9 @@ namespace DealerOnProblemOne
     public class EstablishGridCommand : BaseCommand
     {
         /// <summary>
-        /// Gets the length of the X axis of the grid.
+        /// Gets the size of the grid.
         /// </summary>
-        public int XLength
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets the length of the Y axis of the grid.
-        /// </summary>
-        public int YLength
+        public Size Grid
         {
             get;
             private set;
@@ -46,8 +38,11 @@ namespace DealerOnProblemOne
         {
             var values = SplitLine(instructions, 2, ec => throw new ArgumentException($"Expected {ec} values for the establish grid command.", "instructions"));
 
-            this.XLength = ConvertToInt(values[0], "X axis length for the establish grid command could not be converted to an integer.");
-            this.YLength = ConvertToInt(values[1], "Y axis length for the establish grid command could not be converted to an integer.");
+            this.Grid = new Size
+            {
+                Width = ConvertToInt(values[0], "X axis length for the establish grid command could not be converted to an integer."),
+                Height = ConvertToInt(values[1], "Y axis length for the establish grid command could not be converted to an integer.")
+            };
         }
     }
 }
