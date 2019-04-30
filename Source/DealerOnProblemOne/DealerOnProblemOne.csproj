@@ -44,15 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="LocalCommandSetDispatcherFactory.cs" />
     <Compile Include="CommandSetInterpreter.cs" />
+    <Compile Include="ConfirmPositionCommand.cs" />
     <Compile Include="EstablishGridCommand.cs" />
     <Compile Include="FileCommandSetReader.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandSet.cs" />
     <Compile Include="ICommandSetDispatcher.cs" />
+    <Compile Include="ICommandSetDispatcherFactory.cs" />
     <Compile Include="ICommandSetExecutor.cs" />
     <Compile Include="ICommandSetReader.cs" />
     <Compile Include="LocalCommandSetDispatcher.cs" />
+    <Compile Include="MoveCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

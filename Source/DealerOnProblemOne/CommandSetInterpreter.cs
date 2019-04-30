@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,19 +18,19 @@ namespace DealerOnProblemOne
         private readonly ICommandSetReader reader;
 
         /// <summary>
-        /// Interface for dispatching a command set.
+        /// Interface for creating objects to dispatch a command set.
         /// </summary>
-        private readonly ICommandSetDispatcher dispatcher;
+        private readonly ICommandSetDispatcherFactory dispatcherFactory;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="reader">Interface for reading a command set.</param>
-        /// <param name="dispatcher">Interface for dispatching a command set.</param>
-        public CommandSetInterpreter(ICommandSetReader reader, ICommandSetDispatcher dispatcher)
+        /// <param name="dispatcherFactory">Interface for creating objects to dispatch a command set.</param>
+        public CommandSetInterpreter(ICommandSetReader reader, ICommandSetDispatcherFactory dispatcherFactory)
         {
             this.reader = reader;
-            this.dispatcher = dispatcher;
+            this.dispatcherFactory = dispatcherFactory;
         }
 
         /// <summary>
@@ -39,7 +40,33 @@ namespace DealerOnProblemOne
         {
             var rawInstructions = reader.Read();
 
-            dispatcher.Dispatch(rawInstructions);
+            using (var reader = new StringReader(rawInstructions))
+            {
+                var line = reader.ReadLine();
+
+                var establishGridCommand = new EstablishGridCommand(line);
+
+                while (true)
+                {
+                    line = reader.ReadLine();
+
+                    // Check for end of the instructions.
+                    if (line == null)
+                    {
+                        break;
+                    }
+
+                    var confirmPositionCommand = new ConfirmPositionCommand(line);
+
+                    line = reader.ReadLine();
+
+                    var moveCommand = new MoveCommand(line);
+
+                    var dispatcher = dispatcherFactory.Create();
+
+                    dispatcher.Dispatch(establishGridCommand, confirmPositionCommand, moveCommand);
+                }
+            }
         }
     }
 }

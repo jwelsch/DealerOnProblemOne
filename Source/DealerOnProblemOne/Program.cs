@@ -32,15 +32,15 @@ namespace DealerOnProblemOne
                 }
 
                 var reader = new FileCommandSetReader(path);
-                var dispatcher = new LocalCommandSetDispatcher();
+                var dispatcherFactory = new LocalCommandSetDispatcherFactory();
 
-                RunCommandSet(reader, dispatcher);
+                RunCommandSet(reader, dispatcherFactory);
             }
         }
 
-        private static void RunCommandSet(ICommandSetReader reader, ICommandSetDispatcher dispatcher)
+        private static void RunCommandSet(ICommandSetReader reader, ICommandSetDispatcherFactory dispatcherFactory)
         {
-            var interpreter = new CommandSetInterpreter(reader, dispatcher);
+            var interpreter = new CommandSetInterpreter(reader, dispatcherFactory);
 
             interpreter.Interpret();
         }

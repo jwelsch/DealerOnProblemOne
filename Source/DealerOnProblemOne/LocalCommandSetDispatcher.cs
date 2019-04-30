@@ -15,15 +15,11 @@ namespace DealerOnProblemOne
         /// <summary>
         /// Dispatches instructions to be executed.
         /// </summary>
-        /// <param name="instructions">Instructions to be executed.</param>
-        public void Dispatch(string instructions)
+        /// <param name="establishGrid">Command to establish the grid.</param>
+        /// <param name="confirmPosition">Command to confirm position.</param>
+        /// <param name="move">Command to move.</param>
+        public void Dispatch(ICommand establishGrid, ICommand confirmPosition, ICommand move)
         {
-            using (var reader = new StringReader(instructions))
-            {
-                var gridRaw = reader.ReadLine();
-
-                var establishGridCommand = new EstablishGridCommand(gridRaw);
-            }
         }
     }
 }

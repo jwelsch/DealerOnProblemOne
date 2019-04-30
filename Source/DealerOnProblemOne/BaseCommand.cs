@@ -35,5 +35,58 @@ namespace DealerOnProblemOne
         /// </summary>
         /// <param name="instructions">Raw instructions of the command.</param>
         protected abstract void ParseInstructions(string instructions);
+
+        /// <summary>
+        /// Splits an instruction line into constituent values.
+        /// </summary>
+        /// <param name="line">Line to split.</param>
+        /// <param name="expectedCount">Number of values to expect.</param>
+        /// <param name="onError">Action to invoke when an error is encountered.</param>
+        /// <returns>Constituent values of the line.</returns>
+        protected static string[] SplitLine(string line, int expectedCount, Action<int> onError)
+        {
+            var values = line.Split(' ');
+
+            if (values == null || values.Length != expectedCount)
+            {
+                onError?.Invoke(expectedCount);
+            }
+
+            return values;
+        }
+
+        /// <summary>
+        /// Converts a string to an integer and will throw an FormatException if conversion fails.
+        /// </summary>
+        /// <param name="value">Value to convert.</param>
+        /// <param name="errorMessage">Error message.</param>
+        /// <returns>Converted integer.</returns>
+        protected static int ConvertToInt(string value, string errorMessage)
+        {
+            var result = 0;
+
+            if (!int.TryParse(value, out result))
+            {
+                throw new FormatException(errorMessage);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts a string to a character and will throw an FormatException if conversion fails.
+        /// </summary>
+        /// <param name="value">Value to convert.</param>
+        /// <param name="errorMessage">Error message.</param>
+        /// <returns>Converted integer.</returns>
+        protected static char ConvertToChar(string value, string errorMessage)
+        {
+            if (string.IsNullOrWhiteSpace(value) || value.Length != 1)
+            {
+                throw new FormatException(errorMessage);
+            }
+
+            return value[0];
+        }
     }
 }

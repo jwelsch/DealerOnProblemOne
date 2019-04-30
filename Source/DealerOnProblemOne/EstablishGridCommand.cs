@@ -44,28 +44,10 @@ namespace DealerOnProblemOne
         /// <param name="instructions">Raw instructions of the command.</param>
         protected override void ParseInstructions(string instructions)
         {
-            var gridValues = instructions.Split(' ');
+            var values = SplitLine(instructions, 2, ec => throw new ArgumentException($"Expected {ec} values for the establish grid command.", "instructions"));
 
-            if (gridValues == null || gridValues.Length == 0)
-            {
-                throw new ArgumentException("Expected two values for the establish grid command.", "instructions");
-            }
-
-            var length = 0;
-
-            if (!int.TryParse(gridValues[0], out length))
-            {
-                throw new FormatException($"X axis length for the establish grid command could not be converted to an integer.");
-            }
-
-            this.XLength = length;
-
-            if (!int.TryParse(gridValues[1], out length))
-            {
-                throw new FormatException($"Y axis length for the establish grid command could not be converted to an integer.");
-            }
-
-            this.YLength = length;
+            this.XLength = ConvertToInt(values[0], "X axis length for the establish grid command could not be converted to an integer.");
+            this.YLength = ConvertToInt(values[1], "Y axis length for the establish grid command could not be converted to an integer.");
         }
     }
 }
