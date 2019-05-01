@@ -54,6 +54,7 @@
     <Compile Include="EstablishGridCommandTest.cs" />
     <Compile Include="HeadingCalculatorTest.cs" />
     <Compile Include="InstructionHelperTest.cs" />
+    <Compile Include="MoveCommandTest.cs" />
     <Compile Include="PositionCalculatorTest.cs" />
     <Compile Include="ProgramTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

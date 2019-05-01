@@ -35,6 +35,11 @@ namespace DealerOnProblemOne
         /// <param name="instructions">Raw instructions of the command.</param>
         protected override void ParseInstructions(string instructions)
         {
+            if (instructions == null)
+            {
+                throw new ArgumentNullException(nameof(instructions), "The instructions cannot be null.");
+            }
+
             var moves = new List<Movement>();
 
             foreach (var m in instructions)
