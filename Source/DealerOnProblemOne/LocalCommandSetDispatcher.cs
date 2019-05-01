@@ -41,7 +41,7 @@ namespace DealerOnProblemOne
 
             this.guidance.Move(commandSet);
 
-            this.listener?.Transmit($"{this.guidance.Coordinates.X} {this.guidance.Coordinates.Y} {this.guidance.Heading.ToString()[0]}");
+            this.listener?.Transmit($"{this.guidance.Coordinates.X} {this.guidance.Coordinates.Y} {InstructionHelper.ConvertHeadingToString(this.guidance.Heading)}");
         }
     }
 }
