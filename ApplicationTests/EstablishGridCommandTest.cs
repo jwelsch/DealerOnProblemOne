@@ -58,6 +58,28 @@ namespace ApplicationTests
         }
 
         [TestMethod]
+        public void InstructionsWithNegativeXValueShouldThrowException()
+        {
+            var instructions = "-4 5";
+
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                var command = new EstablishGridCommand(instructions);
+            });
+        }
+
+        [TestMethod]
+        public void InstructionsWithNegativeYValueShouldThrowException()
+        {
+            var instructions = "4 -5";
+
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                var command = new EstablishGridCommand(instructions);
+            });
+        }
+
+        [TestMethod]
         public void InstructionsWithNoValuesShouldThrowException()
         {
             var instructions = "";

@@ -68,6 +68,16 @@ namespace DealerOnProblemOne
                 throw new ArgumentException("Y axis length for the establish grid command could not be converted to an integer.", nameof(instructions), ex);
             }
 
+            if (w < 0)
+            {
+                throw new ArgumentException(nameof(instructions), "X axis length for the establish grid command cannot be less than zero.");
+            }
+
+            if (h < 0)
+            {
+                throw new ArgumentException(nameof(instructions), "Y axis length for the establish grid command cannot be less than zero.");
+            }
+
             this.Grid = new Size
             {
                 Width = w,
