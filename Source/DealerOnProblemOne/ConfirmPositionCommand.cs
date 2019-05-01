@@ -45,15 +45,51 @@ namespace DealerOnProblemOne
         /// <param name="instructions">Raw instructions of the command.</param>
         protected override void ParseInstructions(string instructions)
         {
-            var values = SplitLine(instructions, 3, ec => throw new ArgumentException($"Expected {ec} values for the confirm position command.", "instructions"));
+            string[] values;
+            int x;
+            int y;
+
+            try
+            {
+                values = InstructionHelper.SplitLine(instructions, 3);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error encountered while parsing the confirm position command.", nameof(instructions), ex);
+            }
+
+            try
+            {
+                x = InstructionHelper.ConvertToInt(values[0]);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("X axis length for the confirm position command could not be converted to an integer.", nameof(instructions), ex);
+            }
+
+            try
+            {
+                y = InstructionHelper.ConvertToInt(values[1]);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Y axis length for the confirm position command could not be converted to an integer.", nameof(instructions), ex);
+            }
 
             this.Coordinates = new Point
             {
-                X = ConvertToInt(values[0], "X axis length for the confirm position command could not be converted to an integer."),
-                Y = ConvertToInt(values[1], "Y axis length for the confirm position command could not be converted to an integer.")
+                X = x,
+                Y = y
             };
 
-            this.Heading = ConvertToHeading(values[2], "Heading for the confirm position command could not be converted to a string.");
+            try
+            {
+                this.Heading = InstructionHelper.ConvertStringToHeading(values[2]);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Heading for the confirm position command could not be converted to a string.", nameof(instructions), ex);
+            }
         }
     }
 }

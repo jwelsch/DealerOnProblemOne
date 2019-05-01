@@ -51,6 +51,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="HeadingCalculator.cs" />
     <Compile Include="ICommandSetListener.cs" />
+    <Compile Include="InstructionHelper.cs" />
     <Compile Include="IRoverGuidance.cs" />
     <Compile Include="LocalCommandSetDispatcherFactory.cs" />
     <Compile Include="CommandSetInterpreter.cs" />

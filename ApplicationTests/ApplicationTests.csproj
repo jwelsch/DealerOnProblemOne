@@ -50,7 +50,9 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstablishGridCommandTest.cs" />
     <Compile Include="HeadingCalculatorTest.cs" />
+    <Compile Include="InstructionHelperTest.cs" />
     <Compile Include="PositionCalculatorTest.cs" />
     <Compile Include="ProgramTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
