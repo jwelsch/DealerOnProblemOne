@@ -25,7 +25,7 @@ namespace ApplicationTests.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\Data\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\Data\\\\")]
         public string TestDataPath {
             get {
                 return ((string)(this["TestDataPath"]));
