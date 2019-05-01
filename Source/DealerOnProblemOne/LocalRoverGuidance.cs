@@ -87,7 +87,17 @@ namespace DealerOnProblemOne
             {
                 if (m == Movement.Move)
                 {
-                    this.Coordinates = PositionCalculator.Move(this.Heading, this.Coordinates);
+                    var coordinates = PositionCalculator.Move(this.Heading, this.Coordinates);
+
+                    if (coordinates.X < 0
+                        || coordinates.X > commandSet.EstablishGrid.Grid.Width
+                        || coordinates.Y < 0
+                        || coordinates.Y > commandSet.EstablishGrid.Grid.Height)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(commandSet), "The movements are out of range of the grid.");
+                    }
+
+                    this.Coordinates = coordinates;
                 }
                 else
                 {

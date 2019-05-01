@@ -57,6 +57,7 @@
     <Compile Include="EstablishGridCommandTest.cs" />
     <Compile Include="FileCommandSetReaderTest.cs" />
     <Compile Include="LocalCommandSetDispatcherTest.cs" />
+    <Compile Include="LocalRoverGuidanceTest.cs" />
     <Compile Include="Mocks\MockCommandSetListener.cs" />
     <Compile Include="Mocks\MockRoverGuidance.cs" />
     <Compile Include="Mocks\MockCommandSetDispatcher.cs" />
