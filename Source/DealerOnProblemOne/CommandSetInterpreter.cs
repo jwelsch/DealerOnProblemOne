@@ -29,8 +29,8 @@ namespace DealerOnProblemOne
         /// <param name="dispatcherFactory">Interface for creating objects to dispatch a command set.</param>
         public CommandSetInterpreter(ICommandSetReader reader, ICommandSetDispatcherFactory dispatcherFactory)
         {
-            this.reader = reader;
-            this.dispatcherFactory = dispatcherFactory;
+            this.reader = reader ?? throw new ArgumentNullException(nameof(reader));
+            this.dispatcherFactory = dispatcherFactory ?? throw new ArgumentNullException(nameof(dispatcherFactory));
         }
 
         /// <summary>
