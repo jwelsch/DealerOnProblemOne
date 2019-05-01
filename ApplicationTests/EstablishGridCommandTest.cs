@@ -21,6 +21,19 @@ namespace ApplicationTests
         }
 
         [TestMethod]
+        public void ZeroByZeroGridSizeShouldCreateObjectSuccessfully()
+        {
+            var instructions = "0 0";
+
+            var command = new EstablishGridCommand(instructions);
+
+            Assert.IsNotNull(command);
+            Assert.AreEqual(instructions, command.Instructions);
+            Assert.AreEqual(0, command.Grid.Width);
+            Assert.AreEqual(0, command.Grid.Height);
+        }
+
+        [TestMethod]
         public void InstructionsWithOneValueShouldThrowException()
         {
             var instructions = "4";

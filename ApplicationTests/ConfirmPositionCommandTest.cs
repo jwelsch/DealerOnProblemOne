@@ -22,6 +22,20 @@ namespace ApplicationTests
         }
 
         [TestMethod]
+        public void PositionAtOriginShouldCreateObjectSuccessfully()
+        {
+            var instructions = "0 0 S";
+
+            var command = new ConfirmPositionCommand(instructions);
+
+            Assert.IsNotNull(command);
+            Assert.AreEqual(instructions, command.Instructions);
+            Assert.AreEqual(0, command.Coordinates.X);
+            Assert.AreEqual(0, command.Coordinates.Y);
+            Assert.AreEqual(Heading.South, command.Heading);
+        }
+
+        [TestMethod]
         public void InstructionsWithTwoValuesShouldThrowException()
         {
             var instructions = "4 5";
