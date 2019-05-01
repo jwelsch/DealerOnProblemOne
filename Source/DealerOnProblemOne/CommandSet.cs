@@ -43,9 +43,9 @@ namespace DealerOnProblemOne
         /// <param name="move">The move command.</param>
         public CommandSet(EstablishGridCommand establishGrid, ConfirmPositionCommand confirmPosition, MoveCommand move)
         {
-            this.EstablishGrid = establishGrid;
-            this.ConfirmPosition = confirmPosition;
-            this.Move = move;
+            this.EstablishGrid = establishGrid ?? throw new ArgumentNullException(nameof(establishGrid));
+            this.ConfirmPosition = confirmPosition ?? throw new ArgumentNullException(nameof(confirmPosition));
+            this.Move = move ?? throw new ArgumentNullException(nameof(move));
         }
     }
 }

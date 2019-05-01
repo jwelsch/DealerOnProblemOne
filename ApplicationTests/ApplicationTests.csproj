@@ -50,6 +50,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandSetTest.cs" />
     <Compile Include="ConfirmPositionCommandTest.cs" />
     <Compile Include="EstablishGridCommandTest.cs" />
     <Compile Include="HeadingCalculatorTest.cs" />
