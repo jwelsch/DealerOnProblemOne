@@ -41,11 +41,13 @@ namespace DealerOnProblemOne
         /// <returns>Heading after the turn.</returns>
         public static Heading Turn(Heading current, Movement movement)
         {
+            // Heading does not change if the movement is straight ahead.
             if (movement == Movement.Move)
             {
                 return current;
             }
 
+            // Select the correct order of headings based on the direction of the turn.
             var headings = movement == Movement.Right ? HeadingsClockwise : HeadingsCounterClockwise;
 
             var index = headings.IndexOf(current);
