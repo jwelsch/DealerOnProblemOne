@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationTests
+namespace ApplicationTests.Mocks
 {
-    public class FakeCommandSetReader : ICommandSetReader
+    public class MockCommandSetReader : ICommandSetReader
     {
         private readonly Func<string> readReturn;
 
-        public FakeCommandSetReader(Func<string> readReturn)
+        public MockCommandSetReader(Func<string> readReturn)
         {
             this.readReturn = readReturn;
         }
 
-        public FakeCommandSetReader()
+        public MockCommandSetReader()
             : this(null)
         {
         }

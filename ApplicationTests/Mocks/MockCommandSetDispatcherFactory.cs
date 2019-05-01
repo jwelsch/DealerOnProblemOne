@@ -5,25 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationTests
+namespace ApplicationTests.Mocks
 {
-    public class FakeCommandSetDispatcherFactory : ICommandSetDispatcherFactory
+    public class MockCommandSetDispatcherFactory : ICommandSetDispatcherFactory
     {
         private readonly Action<CommandSet> dispatchCheck;
 
-        public FakeCommandSetDispatcherFactory(Action<CommandSet> dispatchCheck)
+        public MockCommandSetDispatcherFactory(Action<CommandSet> dispatchCheck)
         {
             this.dispatchCheck = dispatchCheck;
         }
 
-        public FakeCommandSetDispatcherFactory()
+        public MockCommandSetDispatcherFactory()
             : this(null)
         {
         }
 
         public ICommandSetDispatcher Create()
         {
-            return new FakeCommandSetDispatcher(this.dispatchCheck);
+            return new MockCommandSetDispatcher(this.dispatchCheck);
         }
     }
 }

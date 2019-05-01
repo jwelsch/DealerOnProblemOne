@@ -1,0 +1,5 @@
+6 6
+2 5 W
+MMLMRM
+4 0 E
+LLMMLM

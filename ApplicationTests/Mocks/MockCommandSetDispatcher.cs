@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationTests
+namespace ApplicationTests.Mocks
 {
-    public class FakeCommandSetDispatcher : ICommandSetDispatcher
+    public class MockCommandSetDispatcher : ICommandSetDispatcher
     {
         private readonly Action<CommandSet> dispatchCheck;
 
-        public FakeCommandSetDispatcher(Action<CommandSet> dispatchCheck)
+        public MockCommandSetDispatcher(Action<CommandSet> dispatchCheck)
         {
             this.dispatchCheck = dispatchCheck;
         }
 
-        public FakeCommandSetDispatcher()
+        public MockCommandSetDispatcher()
             : this(null)
         {
         }

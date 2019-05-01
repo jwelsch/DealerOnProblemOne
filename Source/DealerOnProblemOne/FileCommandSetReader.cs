@@ -23,7 +23,17 @@ namespace DealerOnProblemOne
         /// <param name="path">Path to the file to read.</param>
         public FileCommandSetReader(string path)
         {
-            this.path = path;
+            this.path = path ?? throw new ArgumentNullException(nameof(path));
+
+            if (path.Length == 0)
+            {
+                throw new ArgumentException("The path is empty.", nameof(path));
+            }
+
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException("The file at the path does not exist.", path);
+            }
         }
 
         /// <summary>

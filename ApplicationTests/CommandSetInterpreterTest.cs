@@ -1,4 +1,5 @@
-﻿using DealerOnProblemOne;
+﻿using ApplicationTests.Mocks;
+using DealerOnProblemOne;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace ApplicationTests
             var establishGridInstructions = "10 10";
             var confirmPositionInstructions = "3 4 E";
             var moveInstructions = "LLMMRMM";
-            var reader = new FakeCommandSetReader(() => $"{establishGridInstructions}{Environment.NewLine}{confirmPositionInstructions}{Environment.NewLine}{moveInstructions}");
-            var dispatcherFactory = new FakeCommandSetDispatcherFactory(cs =>
+            var reader = new MockCommandSetReader(() => $"{establishGridInstructions}{Environment.NewLine}{confirmPositionInstructions}{Environment.NewLine}{moveInstructions}");
+            var dispatcherFactory = new MockCommandSetDispatcherFactory(cs =>
             {
                 Assert.IsNotNull(cs);
                 Assert.AreEqual(establishGridInstructions, cs.EstablishGrid.Instructions);
@@ -49,7 +50,7 @@ namespace ApplicationTests
         {
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                var interpreter = new CommandSetInterpreter(null, new FakeCommandSetDispatcherFactory());
+                var interpreter = new CommandSetInterpreter(null, new MockCommandSetDispatcherFactory());
             });
         }
 
@@ -58,7 +59,7 @@ namespace ApplicationTests
         {
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                var interpreter = new CommandSetInterpreter(new FakeCommandSetReader(), null);
+                var interpreter = new CommandSetInterpreter(new MockCommandSetReader(), null);
             });
         }
     }
