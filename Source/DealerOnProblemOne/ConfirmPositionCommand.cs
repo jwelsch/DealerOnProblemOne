@@ -46,16 +46,17 @@ namespace DealerOnProblemOne
         protected override void ParseInstructions(string instructions)
         {
             string[] values;
-            int x;
-            int y;
+            var count = 3;
+            var x = 0;
+            var y = 0;
 
             try
             {
-                values = InstructionHelper.SplitLine(instructions, 3);
+                values = InstructionHelper.SplitLine(instructions, count);
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("Error encountered while parsing the confirm position command.", nameof(instructions), ex);
+                throw new ArgumentException($"Expected {count} values for the confirm position command.", nameof(instructions), ex);
             }
 
             try
