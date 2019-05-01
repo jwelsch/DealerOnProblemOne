@@ -33,6 +33,16 @@ namespace DealerOnProblemOne
         /// <returns>Converted integer.</returns>
         public static int ConvertToInt(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (value.Length == 0)
+            {
+                throw new ArgumentException("The string to convert cannot be empty.", nameof(value));
+            }
+
             return Convert.ToInt32(value);
         }
 
@@ -43,6 +53,11 @@ namespace DealerOnProblemOne
         /// <returns>Converted integer.</returns>
         public static Heading ConvertStringToHeading(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             if (string.IsNullOrWhiteSpace(value) || value.Length != 1)
             {
                 throw new ArgumentException("Expected the string to convert to have length of 1 and be non-whitespace.", nameof(value));
@@ -73,6 +88,38 @@ namespace DealerOnProblemOne
         public static string ConvertHeadingToString(Heading heading)
         {
             return heading.ToString()[0].ToString();
+        }
+
+        /// <summary>
+        /// Converts a string to a movement value.
+        /// </summary>
+        /// <param name="value">String value to convert.</param>
+        /// <returns>Movement value.</returns>
+        public static Movement ConvertStringToMovement(string value)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (value.Length != 1)
+            {
+                throw new ArgumentException("The value must have a length of one.");
+            }
+
+            var c = Char.ToUpper(Convert.ToChar(value));
+
+            switch (c)
+            {
+                case 'L':
+                    return Movement.Left;
+                case 'R':
+                    return Movement.Right;
+                case 'M':
+                    return Movement.Move;
+                default:
+                    throw new ArgumentException($"The value {value} does not correspond to a movement.", nameof(value));
+            }
         }
     }
 }
