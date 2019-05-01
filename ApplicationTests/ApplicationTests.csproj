@@ -56,6 +56,9 @@
     <Compile Include="ConfirmPositionCommandTest.cs" />
     <Compile Include="EstablishGridCommandTest.cs" />
     <Compile Include="FileCommandSetReaderTest.cs" />
+    <Compile Include="LocalCommandSetDispatcherTest.cs" />
+    <Compile Include="Mocks\MockCommandSetListener.cs" />
+    <Compile Include="Mocks\MockRoverGuidance.cs" />
     <Compile Include="Mocks\MockCommandSetDispatcher.cs" />
     <Compile Include="Mocks\MockCommandSetDispatcherFactory.cs" />
     <Compile Include="Mocks\MockCommandSetReader.cs" />
@@ -85,8 +88,9 @@
       <Name>DealerOnProblemOne</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Content Include="Data\instructions.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,7 +15,7 @@ namespace DealerOnProblemOne
         /// <summary>
         /// The rover guidance logic to use.
         /// </summary>
-        private readonly LocalRoverGuidance guidance;
+        private readonly IRoverGuidance guidance;
 
         /// <summary>
         /// Listener to use.
@@ -27,10 +27,10 @@ namespace DealerOnProblemOne
         /// </summary>
         /// <param name="guidance">Rover guidance to use.</param>
         /// <param name="listener">Listener to use.</param>
-        public LocalCommandSetDispatcher(LocalRoverGuidance guidance, ICommandSetListener listener)
+        public LocalCommandSetDispatcher(IRoverGuidance guidance, ICommandSetListener listener)
         {
-            this.guidance = guidance;
-            this.listener = listener;
+            this.guidance = guidance ?? throw new ArgumentNullException(nameof(guidance));
+            this.listener = listener ?? throw new ArgumentNullException(nameof(listener));
         }
 
         /// <summary>
@@ -39,6 +39,11 @@ namespace DealerOnProblemOne
         /// <param name="commandSet">Command set to dispatch.</param>
         public void Dispatch(CommandSet commandSet)
         {
+            if (commandSet == null)
+            {
+                throw new ArgumentNullException(nameof(commandSet));
+            }
+
             this.guidance.Move(commandSet);
 
             this.listener?.Transmit($"{this.guidance.Coordinates.X} {this.guidance.Coordinates.Y} {this.guidance.Heading.ToString()[0]}");

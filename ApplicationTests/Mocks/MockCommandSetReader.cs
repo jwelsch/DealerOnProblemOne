@@ -11,14 +11,9 @@ namespace ApplicationTests.Mocks
     {
         private readonly Func<string> readReturn;
 
-        public MockCommandSetReader(Func<string> readReturn)
+        public MockCommandSetReader(Func<string> readReturn = null)
         {
             this.readReturn = readReturn;
-        }
-
-        public MockCommandSetReader()
-            : this(null)
-        {
         }
 
         public string Read()

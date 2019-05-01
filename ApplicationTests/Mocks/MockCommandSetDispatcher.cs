@@ -11,14 +11,9 @@ namespace ApplicationTests.Mocks
     {
         private readonly Action<CommandSet> dispatchCheck;
 
-        public MockCommandSetDispatcher(Action<CommandSet> dispatchCheck)
+        public MockCommandSetDispatcher(Action<CommandSet> dispatchCheck = null)
         {
             this.dispatchCheck = dispatchCheck;
-        }
-
-        public MockCommandSetDispatcher()
-            : this(null)
-        {
         }
 
         public void Dispatch(CommandSet commandSet)
