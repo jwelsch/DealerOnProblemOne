@@ -11,27 +11,19 @@ namespace DealerOnProblemOne
     {
         public static Point Move(Heading heading, Point position)
         {
-            var result = position;
-
             switch (heading)
             {
                 case Heading.North:
-                    result.Y += 1;
-                    break;
+                    return new Point(position.X, position.Y + 1);
                 case Heading.South:
-                    result.Y -= 1;
-                    break;
+                    return new Point(position.X, position.Y - 1);
                 case Heading.East:
-                    result.X += 1;
-                    break;
+                    return new Point(position.X + 1, position.Y);
                 case Heading.West:
-                    result.Y -= 1;
-                    break;
+                    return new Point(position.X - 1, position.Y);
                 default:
                     throw new ArgumentException($"Unknown heading {heading} specified.", nameof(heading));
             }
-
-            return result;
         }
     }
 }

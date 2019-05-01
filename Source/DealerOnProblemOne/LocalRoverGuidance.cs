@@ -85,7 +85,14 @@ namespace DealerOnProblemOne
 
             foreach (var m in commandSet.Move.Moves)
             {
-                this.Heading = HeadingCalculator.Turn(this.Heading, m);
+                if (m == Movement.Move)
+                {
+                    this.Coordinates = PositionCalculator.Move(this.Heading, this.Coordinates);
+                }
+                else
+                {
+                    this.Heading = HeadingCalculator.Turn(this.Heading, m);
+                }
             }
         }
     }

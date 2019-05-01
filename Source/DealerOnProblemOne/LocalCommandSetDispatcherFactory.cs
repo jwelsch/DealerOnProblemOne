@@ -17,7 +17,7 @@ namespace DealerOnProblemOne
         /// <returns>The created object.</returns>
         public ICommandSetDispatcher Create()
         {
-            return new LocalCommandSetDispatcher(new LocalRoverGuidance());
+            return new LocalCommandSetDispatcher(new LocalRoverGuidance(), new ConsoleCommandSetListener());
         }
     }
 }

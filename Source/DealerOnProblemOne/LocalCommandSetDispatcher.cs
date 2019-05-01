@@ -18,12 +18,19 @@ namespace DealerOnProblemOne
         private readonly LocalRoverGuidance guidance;
 
         /// <summary>
+        /// Listener to use.
+        /// </summary>
+        private readonly ICommandSetListener listener;
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="guidance">Rover guidance to use.</param>
-        public LocalCommandSetDispatcher(LocalRoverGuidance guidance)
+        /// <param name="listener">Listener to use.</param>
+        public LocalCommandSetDispatcher(LocalRoverGuidance guidance, ICommandSetListener listener)
         {
             this.guidance = guidance;
+            this.listener = listener;
         }
 
         /// <summary>
@@ -33,6 +40,8 @@ namespace DealerOnProblemOne
         public void Dispatch(CommandSet commandSet)
         {
             this.guidance.Move(commandSet);
+
+            this.listener?.Transmit($"{this.guidance.Coordinates.X} {this.guidance.Coordinates.Y} {this.guidance.Heading.ToString()[0]}");
         }
     }
 }
