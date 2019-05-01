@@ -70,6 +70,28 @@ namespace ApplicationTests
         }
 
         [TestMethod]
+        public void InstructionsWithNegativeXValueShouldThrowException()
+        {
+            var instructions = "-4 5 N";
+
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                var command = new ConfirmPositionCommand(instructions);
+            });
+        }
+
+        [TestMethod]
+        public void InstructionsWithNegativeYValueShouldThrowException()
+        {
+            var instructions = "4 -5 N";
+
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                var command = new ConfirmPositionCommand(instructions);
+            });
+        }
+
+        [TestMethod]
         public void InstructionsWithNoValuesShouldThrowException()
         {
             var instructions = "";

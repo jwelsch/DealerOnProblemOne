@@ -48,23 +48,6 @@ namespace ApplicationTests
         }
 
         [TestMethod]
-        public void MoveWithInvalidConfirmPositionCommandShouldThrowException()
-        {
-            var establishGrid = new EstablishGridCommand("5 5");
-            var confirmPosition = new ConfirmPositionCommand("-1 2 N");
-            var move = new MoveCommand("LMRM");
-
-            var commandSet = new CommandSet(establishGrid, confirmPosition, move);
-
-            var guidance = new LocalRoverGuidance();
-
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                guidance.Move(commandSet);
-            });
-        }
-
-        [TestMethod]
         public void MoveWithMoveCommandGoingPastXOriginShouldThrowException()
         {
             var establishGrid = new EstablishGridCommand("5 5");

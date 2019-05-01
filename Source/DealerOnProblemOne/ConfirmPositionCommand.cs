@@ -65,7 +65,7 @@ namespace DealerOnProblemOne
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("X axis length for the confirm position command could not be converted to an integer.", nameof(instructions), ex);
+                throw new ArgumentException("X axis position for the confirm position command could not be converted to an integer.", nameof(instructions), ex);
             }
 
             try
@@ -74,7 +74,7 @@ namespace DealerOnProblemOne
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("Y axis length for the confirm position command could not be converted to an integer.", nameof(instructions), ex);
+                throw new ArgumentException("Y axis position for the confirm position command could not be converted to an integer.", nameof(instructions), ex);
             }
 
             this.Coordinates = new Point
@@ -82,6 +82,16 @@ namespace DealerOnProblemOne
                 X = x,
                 Y = y
             };
+
+            if (x < 0)
+            {
+                throw new ArgumentException("X axis position for the confirm position command cannot be less than zero.", nameof(instructions));
+            }
+
+            if (y < 0)
+            {
+                throw new ArgumentException("Y axis position for the confirm position command cannot be less than zero.", nameof(instructions));
+            }
 
             try
             {

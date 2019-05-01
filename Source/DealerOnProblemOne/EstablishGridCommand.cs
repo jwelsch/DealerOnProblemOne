@@ -70,12 +70,12 @@ namespace DealerOnProblemOne
 
             if (w < 0)
             {
-                throw new ArgumentException(nameof(instructions), "X axis length for the establish grid command cannot be less than zero.");
+                throw new ArgumentException("X axis length for the establish grid command cannot be less than zero.", nameof(instructions));
             }
 
             if (h < 0)
             {
-                throw new ArgumentException(nameof(instructions), "Y axis length for the establish grid command cannot be less than zero.");
+                throw new ArgumentException("Y axis length for the establish grid command cannot be less than zero.", nameof(instructions));
             }
 
             this.Grid = new Size
